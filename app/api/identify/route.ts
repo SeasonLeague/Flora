@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const genAI = new GoogleGenerativeAI("AIzaSyDlnGQHxOvtAXNb7oidqIWKZDm5u2KzWxM");
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY as string);
 
 export async function POST(request: Request) {
   const data = await request.formData();
