@@ -3,7 +3,6 @@
 import { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaFacebookF, FaTwitter, FaInstagram, FaGithub } from 'react-icons/fa';
 
 interface PlantData {
   name?: string;
@@ -52,27 +51,6 @@ export default function Home() {
       console.error("Error accessing camera:", err);
       setError("Unable to access camera. Please check your permissions.");
     }
-  };
-  const compressImage = async (file: File): Promise<Blob> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = (event) => {
-        const img = new Image();
-        img.src = event.target?.result as string;
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          canvas.width = img.width;
-          canvas.height = img.height;
-          ctx?.drawImage(img, 0, 0);
-          canvas.toBlob((blob) => {
-            if (blob) resolve(blob);
-            else reject(new Error('Compression failed'));
-          }, 'image/jpeg', 0.7); // Adjust quality as needed
-        };
-      };
-    });
   };
 
   const handleIdentify = async () => {
@@ -130,17 +108,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen gradient-background">
-      <nav className="bg-green-600 text-white p-4">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center">
-          <Link href="/" className="text-xl font-bold mb-2 sm:mb-0">FPC</Link>
-          <ul className="flex space-x-4">
-            <li><Link href="/" className="hover:text-green-200">Home</Link></li>
-            <li><Link href="/about" className="hover:text-green-200">About</Link></li>
-            <li><Link href="/contact" className="hover:text-green-200">Contact</Link></li>
-            <li><Link href="/faq" className="hover:text-green-200">FAQ</Link></li>
-          </ul>
-        </div>
-      </nav>
+
 
       <main className="flex-grow bg-gradient-to-b from-green-100 to-green-300 p-4 sm:p-8">
         <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
@@ -293,45 +261,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-
-      <footer className="bg-green-800 text-white p-8">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-xl font-semibold mb-4">About Us</h3>
-            <p>We're passionate about helping people identify and care for plants. Our AI-powered tool makes plant identification easy and accessible.</p>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><Link href="/privacy" className="hover:text-green-200 transition-colors duration-300">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="hover:text-green-200 transition-colors duration-300">Terms of Service</Link></li>
-              <li><Link href="/contact" className="hover:text-green-200 transition-colors duration-300">Contact Us</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Connect With Us</h3>
-            <p className="mb-4">Follow us on social media for plant care tips and updates:</p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-white hover:text-green-200 transition-colors duration-300">
-                <FaFacebookF className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-white hover:text-green-200 transition-colors duration-300">
-                <FaTwitter className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-white hover:text-green-200 transition-colors duration-300">
-                <FaInstagram className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-white hover:text-green-200 transition-colors duration-300">
-                <FaGithub className="w-6 h-6" />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="mt-8 pt-8 border-t border-green-700 text-center">
-          <p>&copy; 2024 FloraFusion Plant Classifier (FPC). All rights reserved.</p>
-          <p className="mt-2">With love built by Chinemelum</p>
-        </div>
-      </footer>
     </div>
   );
 }
