@@ -1,4 +1,4 @@
-// const genAI = new GoogleGenerativeAI("AIzaSyDlnGQHxOvtAXNb7oidqIWKZDm5u2KzWxM");
+
 import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
