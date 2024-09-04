@@ -71,7 +71,7 @@ export default function RootLayout({
           </div>
           <div className="mt-8 pt-8 border-t border-green-700 text-center">
             <p>&copy; 2024 FloraFusion Plant Classifier (FPC). All rights reserved.</p>
-            <p className="mt-2">With love built by Chinemelum</p>
+            <p className="mt-2">With love built by Ihechibest</p>
           </div>
         </footer>
       </body>
