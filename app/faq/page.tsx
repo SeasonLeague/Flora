@@ -13,7 +13,7 @@ export default function FAQ() {
           </div>
           <div>
             <h2 className="text-xl font-semibold">Is the app free to use?</h2>
-            <p>Yes, the app is totallu totally free to use and open source for modifications. We at FloraFusion are committed to Open Source Softwares.</p>
+            <p>Yes, the app is totally free to use and open source for modifications. We at FloraFusion are committed to Open Source Softwares.</p>
           </div>
         </div>
       </div>
